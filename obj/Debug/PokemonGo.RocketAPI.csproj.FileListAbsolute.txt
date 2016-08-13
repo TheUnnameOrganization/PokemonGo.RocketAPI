@@ -49,9 +49,6 @@ C:\Users\Brian\Documents\Visual Studio 2015\Projects\RocketBot\PokemonGo.RocketA
 C:\Users\Brian\Documents\Visual Studio 2015\Projects\RocketBot\PokemonGo.RocketAPI\bin\Debug\Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling.Data.xml
 C:\Users\Brian\Documents\Visual Studio 2015\Projects\RocketBot\PokemonGo.RocketAPI\bin\Debug\Newtonsoft.Json.xml
 C:\Users\Brian\Documents\Visual Studio 2015\Projects\RocketBot\PokemonGo.RocketAPI\bin\Debug\S2Geometry.xml
-C:\Users\Brian\Documents\Visual Studio 2015\Projects\RocketBot\PokemonGo.RocketAPI\bin\Debug\System.Data.HashFunction.Core.xml
-C:\Users\Brian\Documents\Visual Studio 2015\Projects\RocketBot\PokemonGo.RocketAPI\bin\Debug\System.Data.HashFunction.Interfaces.xml
-C:\Users\Brian\Documents\Visual Studio 2015\Projects\RocketBot\PokemonGo.RocketAPI\bin\Debug\System.Data.HashFunction.xxHash.xml
 C:\Users\Brian\Documents\Visual Studio 2015\Projects\RocketBot\PokemonGo.RocketAPI\bin\Debug\System.Net.Http.Formatting.xml
 C:\Users\Brian\Documents\Visual Studio 2015\Projects\RocketBot\PokemonGo.RocketAPI\obj\Debug\PokemonGo.RocketAPI.csprojResolveAssemblyReference.cache
 C:\Users\Brian\Documents\Visual Studio 2015\Projects\RocketBot\PokemonGo.RocketAPI\obj\Debug\PokemonGo.Rocket.API.dll
