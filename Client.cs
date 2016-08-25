@@ -1,37 +1,26 @@
-﻿using System.Net;
+﻿using System;
+using System.Net;
 using PokemonGo.RocketAPI.Enums;
 using PokemonGo.RocketAPI.Extensions;
 using PokemonGo.RocketAPI.HttpClient;
+using PokemonGo.RocketAPI.Rpc;
 using POGOProtos.Networking.Envelopes;
 
 namespace PokemonGo.RocketAPI
 {
     public class Client
     {
-        public Rpc.Login Login;
-        public Rpc.Player Player;
-        public Rpc.Download Download;
-        public Rpc.Inventory Inventory;
-        public Rpc.Map Map;
-        public Rpc.Fort Fort;
-        public Rpc.Encounter Encounter;
-        public Rpc.Misc Misc;
-
-        public IApiFailureStrategy ApiFailure { get; set; }
-        public ISettings Settings { get; }
-        public string AuthToken { get; set; }
-
         public static WebProxy Proxy;
 
-        public double CurrentLatitude { get; internal set; }
-        public double CurrentLongitude { get; internal set; }
-        public double CurrentAltitude { get; internal set; }
-
-        public AuthType AuthType => Settings.AuthType;
-
         internal readonly PokemonHttpClient PokemonHttpClient;
-        internal string ApiUrl { get; set; }
-        internal AuthTicket AuthTicket { get; set; }
+        public Download Download;
+        public Encounter Encounter;
+        public Fort Fort;
+        public Inventory Inventory;
+        public Rpc.Login Login;
+        public Map Map;
+        public Misc Misc;
+        public Player Player;
 
         public Client(ISettings settings, IApiFailureStrategy apiFailureStrategy)
         {
@@ -40,22 +29,34 @@ namespace PokemonGo.RocketAPI
             Proxy = InitProxy();
             PokemonHttpClient = new PokemonHttpClient();
             Login = new Rpc.Login(this);
-            Player = new Rpc.Player(this);
-            Download = new Rpc.Download(this);
-            Inventory = new Rpc.Inventory(this);
-            Map = new Rpc.Map(this);
-            Fort = new Rpc.Fort(this);
-            Encounter = new Rpc.Encounter(this);
-            Misc = new Rpc.Misc(this);
+            Player = new Player(this);
+            Download = new Download(this);
+            Inventory = new Inventory(this);
+            Map = new Map(this);
+            Fort = new Fort(this);
+            Encounter = new Encounter(this);
+            Misc = new Misc(this);
 
             Player.SetCoordinates(Settings.DefaultLatitude, Settings.DefaultLongitude, Settings.DefaultAltitude);
         }
+
+        public IApiFailureStrategy ApiFailure { get; set; }
+        public ISettings Settings { get; }
+        public string AuthToken { get; set; }
+
+        public double CurrentLatitude { get; internal set; }
+        public double CurrentLongitude { get; internal set; }
+        public double CurrentAltitude { get; internal set; }
+
+        public AuthType AuthType => Settings.AuthType;
+        internal string ApiUrl { get; set; }
+        internal AuthTicket AuthTicket { get; set; }
 
         private WebProxy InitProxy()
         {
             if (!Settings.UseProxy) return null;
 
-            WebProxy prox = new WebProxy(new System.Uri($"http://{Settings.UseProxyHost}:{Settings.UseProxyPort}"), false, null);
+            var prox = new WebProxy(new Uri($"http://{Settings.UseProxyHost}:{Settings.UseProxyPort}"), false, null);
 
             if (Settings.UseProxyAuthentication)
                 prox.Credentials = new NetworkCredential(Settings.UseProxyUsername, Settings.UseProxyPassword);

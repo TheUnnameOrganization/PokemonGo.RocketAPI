@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Google.Protobuf;
 using PokemonGo.RocketAPI.Enums;
 using PokemonGo.RocketAPI.Exceptions;
 using PokemonGo.RocketAPI.Extensions;
-using PokemonGo.RocketAPI.Helpers;
 using PokemonGo.RocketAPI.Login;
 using POGOProtos.Networking.Requests;
 using POGOProtos.Networking.Requests.Messages;
@@ -15,10 +11,11 @@ using POGOProtos.Networking.Requests.Messages;
 namespace PokemonGo.RocketAPI.Rpc
 {
     public delegate void GoogleDeviceCodeDelegate(string code, string uri);
+
     public class Login : BaseRpc
     {
         //public event GoogleDeviceCodeDelegate GoogleDeviceCodeEvent;
-        private ILoginType login;
+        private readonly ILoginType login;
 
         public Login(Client client) : base(client)
         {
@@ -97,6 +94,5 @@ namespace PokemonGo.RocketAPI.Rpc
             _client.AuthTicket = serverResponse.AuthTicket;
             _client.ApiUrl = serverResponse.ApiUrl;
         }
-
     }
 }

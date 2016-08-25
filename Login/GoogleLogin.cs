@@ -1,20 +1,13 @@
-﻿using DankMemes.GPSOAuthSharp;
+﻿using System.Threading.Tasks;
+using DankMemes.GPSOAuthSharp;
 using PokemonGo.RocketAPI.Exceptions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PokemonGo.RocketAPI.Login
 {
     public class GoogleLogin : ILoginType
     {
-        private readonly string password;
         private readonly string email;
+        private readonly string password;
 
         public GoogleLogin(string email, string password)
         {
