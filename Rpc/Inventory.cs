@@ -1,4 +1,9 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using POGOProtos.Enums;
 using POGOProtos.Inventory.Item;
 using POGOProtos.Networking.Requests;
 using POGOProtos.Networking.Requests.Messages;
@@ -144,7 +149,7 @@ namespace PokemonGo.RocketAPI.Rpc
         {
             var message = new SetFavoritePokemonMessage()
             {
-                PokemonId = (long)pokemonId,
+                PokemonId = pokemonId,
                 IsFavorite = isFavorite
             };
 
