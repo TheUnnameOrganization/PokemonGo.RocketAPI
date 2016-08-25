@@ -1,5 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
+using Google.Protobuf.Collections;
+using PokemonGo.RocketAPI;
+using PokemonGo.RocketAPI.Rpc;
 using POGOProtos.Data.Battle;
 using POGOProtos.Inventory.Item;
 using POGOProtos.Networking.Requests;

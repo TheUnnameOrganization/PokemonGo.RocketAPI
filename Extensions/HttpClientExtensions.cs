@@ -1,5 +1,4 @@
-﻿using System;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Google.Protobuf;
@@ -8,6 +7,8 @@ using POGOProtos.Networking.Envelopes;
 
 namespace PokemonGo.RocketAPI.Extensions
 {
+    using System;
+
     public enum ApiOperation
     {
         Retry,

@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using Google.Protobuf;
 using PokemonGo.RocketAPI.Extensions;
@@ -11,7 +14,9 @@ namespace PokemonGo.RocketAPI.Rpc
 {
     public class Map : BaseRpc
     {
-        public Map(Client client) : base(client) { }
+        public Map(Client client) : base(client)
+        {
+        }
 
         public async Task<Tuple<GetMapObjectsResponse, GetHatchedEggsResponse, GetInventoryResponse, CheckAwardedBadgesResponse, DownloadSettingsResponse>> GetMapObjects()
         {
@@ -24,19 +29,15 @@ namespace PokemonGo.RocketAPI.Rpc
                 Latitude = _client.CurrentLatitude,
                 Longitude = _client.CurrentLongitude
             };
-
             var getHatchedEggsMessage = new GetHatchedEggsMessage();
-
             var getInventoryMessage = new GetInventoryMessage
             {
                 LastTimestampMs = DateTime.UtcNow.ToUnixTime()
             };
-
             var checkAwardedBadgesMessage = new CheckAwardedBadgesMessage();
-
             var downloadSettingsMessage = new DownloadSettingsMessage
             {
-                Hash = "54b359c97e46900f87211ef6e6dd0b7f2a3ea1f5"
+                Hash = "2788184af4004004d6ab0740f7632983332106f6"
             };
 
             #endregion
@@ -64,7 +65,6 @@ namespace PokemonGo.RocketAPI.Rpc
                     RequestType = RequestType.DownloadSettings,
                     RequestMessage = downloadSettingsMessage.ToByteString()
                 });
-
             return await PostProtoPayload<Request, GetMapObjectsResponse, GetHatchedEggsResponse, GetInventoryResponse, CheckAwardedBadgesResponse, DownloadSettingsResponse>(request);
         }
 

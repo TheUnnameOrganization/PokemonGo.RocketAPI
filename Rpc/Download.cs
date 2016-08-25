@@ -1,5 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
+using PokemonGo.RocketAPI.Helpers;
 using POGOProtos.Enums;
 using POGOProtos.Networking.Requests;
 using POGOProtos.Networking.Requests.Messages;
@@ -16,7 +20,7 @@ namespace PokemonGo.RocketAPI.Rpc
         {
             var message = new DownloadSettingsMessage
             {
-                Hash = "54b359c97e46900f87211ef6e6dd0b7f2a3ea1f5"
+                Hash = "2788184af4004004d6ab0740f7632983332106f6"
             };
             
             return await PostProtoPayload<Request, DownloadSettingsResponse>(RequestType.DownloadSettings, message);
