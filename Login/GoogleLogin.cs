@@ -2,11 +2,6 @@
 using PokemonGo.RocketAPI.Exceptions;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Security.Cryptography;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace PokemonGo.RocketAPI.Login
@@ -27,7 +22,16 @@ namespace PokemonGo.RocketAPI.Login
 #pragma warning restore 1998
         {
             var client = new GPSOAuthClient(email, password);
-            var response = client.PerformMasterLogin();
+            Dictionary<string, string> response = null;
+            try
+            {
+                response = client.PerformMasterLogin();
+            }
+            catch (NullReferenceException)
+            {
+                //Fix NullReferenceException in PerformMasterLogin
+                throw new InvalidResponseException();
+            };
 
             if (response.ContainsKey("Error"))
                 throw new GoogleException(response["Error"]);

@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Google.Protobuf;
 using PokemonGo.RocketAPI.Enums;
@@ -57,7 +54,7 @@ namespace PokemonGo.RocketAPI.Rpc
             var checkAwardedBadgesMessage = new CheckAwardedBadgesMessage();
             var downloadSettingsMessage = new DownloadSettingsMessage
             {
-                Hash = "05daf51635c82611d1aac95c0b051d3ec088a930"
+                Hash = "54b359c97e46900f87211ef6e6dd0b7f2a3ea1f5"
             };
 
             #endregion

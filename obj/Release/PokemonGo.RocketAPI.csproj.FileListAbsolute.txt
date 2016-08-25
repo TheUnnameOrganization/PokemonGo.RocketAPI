@@ -1,1 +1,0 @@
-C:\Users\Brian\Documents\Visual Studio 2015\Projects\RocketBot\PokemonGo.RocketAPI\obj\Release\PokemonGo.RocketAPI.csprojResolveAssemblyReference.cache
